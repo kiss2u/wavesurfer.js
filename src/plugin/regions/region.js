@@ -211,7 +211,7 @@ export class Region {
 
             // Default CSS properties for both handles.
             const css = {
-                cursor: 'row-resize',
+                cursor: this.vertical ? 'row-resize' : 'col-resize',
                 position: 'absolute',
                 top: '0px',
                 width: '2px',
@@ -680,7 +680,7 @@ export class Region {
         this.element.addEventListener('touchstart', onDown);
 
         document.body.addEventListener('mousemove', onMove);
-        document.body.addEventListener('touchmove', onMove);
+        document.body.addEventListener('touchmove', onMove, {passive: false});
 
         document.addEventListener('mouseup', onUp);
         document.body.addEventListener('touchend', onUp);
